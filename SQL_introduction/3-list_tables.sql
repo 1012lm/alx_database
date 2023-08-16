@@ -5,6 +5,6 @@
 SET @dbname = 'hbtn_test_db_0';
 
 -- Retrieve the list of tables in the specified database
-SELECT TABLE_NAME AS 'Tables_in_' + @dbname
+SELECT TABLE_NAME
 FROM information_schema.TABLES
 WHERE TABLE_SCHEMA = @dbname;
