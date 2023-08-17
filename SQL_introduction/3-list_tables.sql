@@ -7,10 +7,14 @@ CREATE DATABASE IF NOT EXISTS hbtn_test_db_0;
 -- Switch to the newly created database
 USE hbtn_test_db_0;
 
--- Create three tables
-CREATE TABLE holbteron_0 (id INT);
-CREATE TABLE holbteron_1 (id INT);
-CREATE TABLE holbteron_2 (id INT);
+-- Create the first table if it doesn't exist
+CREATE TABLE IF NOT EXISTS holbteron_0 (id INT);
+
+-- Create the second table if it doesn't exist
+CREATE TABLE IF NOT EXISTS holbteron_1 (id INT);
+
+-- Create the third table if it doesn't exist
+CREATE TABLE IF NOT EXISTS holbteron_2 (id INT);
 
 -- List the tables in the database
 SELECT TABLE_NAME AS Tables_in_hbtn_test_db_0
