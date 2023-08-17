@@ -9,11 +9,12 @@ SET @tablename = 'first_table';
 
 -- Retrieve the table creation statement from the information_schema.TABLES view
 SET @table_creation = (
-    SELECT CREATE_TABLE
-    FROM information_schema.TABLES
+    SELECT CONCAT('CREATE TABLE `', TABLE_NAME, '` (', GROUP_CONCAT(COLUMN_NAME, ' ', COLUMN_TYPE, COLUMN_NULLABLE, COLUMN_DEFAULT, SEPARATOR ','), ') ', TABLE_ENGINE, ' DEFAULT CHARSET=', TABLE_COLLATION) AS statement
+    FROM information_schema.COLUMNS
     WHERE TABLE_SCHEMA = @dbname
     AND TABLE_NAME = @tablename
+    GROUP BY TABLE_NAME, TABLE_ENGINE, TABLE_COLLATION
 );
 
 -- Print the full description of the table
-SELECT CONCAT('Table   Create Table\n', @tablename, ' ', @table_creation) AS Description;
+SELECT CONCAT(@tablename, @table_creation) AS Description;
