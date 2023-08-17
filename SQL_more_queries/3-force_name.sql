@@ -7,3 +7,11 @@ CREATE TABLE IF NOT EXISTS `force_name` (
   `name` VARCHAR(256) NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+-- Insert data into the force_name table
+INSERT INTO `force_name` (`id`, `name`) VALUES
+  (1, 'Holberton School'),
+  (2, 'Python is cool'),
+  (3, 'Holberton'),
+  (4, 'School'),
+  (5, 'C is fun');
