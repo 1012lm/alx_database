@@ -1,17 +1,19 @@
 -- Script: 5-full_table.sql
 -- Description: Prints the full description of the table first_table
 
--- Set the database name and table name as variables
--- Create database and table
+-- Set the database name as a variable
+SET @dbname = 'hbtn_0c_0';
 
+-- Set the table name as a variable
+SET @tablename = 'first_table';
 
-DROP DATABASE IF EXISTS hbtn_test_db_5;
-CREATE DATABASE IF NOT EXISTS hbtn_test_db_5;
-USE hbtn_test_db_5;
-CREATE TABLE IF NOT EXISTS first_table (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(128),
-    c CHAR(1),
-    created_at DATE,
-    PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- Retrieve the table creation statement from the information_schema.TABLES view
+SET @table_creation = (
+    SELECT CREATE_TABLE
+    FROM information_schema.TABLES
+    WHERE TABLE_SCHEMA = @dbname
+    AND TABLE_NAME = @tablename
+);
+
+-- Print the full description of the table
+SELECT CONCAT('Table   Create Table\n', @tablename, ' ', @table_creation) AS Description;
