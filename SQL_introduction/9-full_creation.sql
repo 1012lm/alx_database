@@ -16,4 +16,3 @@ INSERT INTO @dbname.second_table (id, name, score)
 VALUES (1, 'John', 10), (2, 'Alex', 3), (3, 'Bob', 14), (4, 'George', 8);
 
 -- Dummy query to display success message
-SELECT 'Records inserted successfully' AS Result;
